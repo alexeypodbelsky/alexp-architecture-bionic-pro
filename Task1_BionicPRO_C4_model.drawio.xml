@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.1.0">
   <diagram name="Page-1" id="Vdj-dLDs9ZxfFK_ICv-k">
-    <mxGraphModel dx="946" dy="1736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1008" dy="1709" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -25,7 +25,7 @@
         </mxCell>
         <mxCell id="-s9W17W-NFw-Ta7AQgpa-28" connectable="0" parent="-s9W17W-NFw-Ta7AQgpa-27" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Отправка&lt;div&gt;&amp;nbsp;технической телеметрии&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.1854" y="4" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="14" y="16" as="offset" />
           </mxGeometry>
         </mxCell>
         <object placeholders="1" c4Name="Программа в чипе протеза" c4Type="Software System" c4Description="Чтение данных с датчиков, распознавание движений и их воспроизводство. Чтение команд из приложения и их воспроизводство, передача телеметрии" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Lhtp9tOnbV0N8Cz71-gY-8">
@@ -58,6 +58,9 @@
           <mxGeometry relative="1" x="0.1336" as="geometry">
             <mxPoint y="1" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="087t9o1YMWc2iChEVM3h-6" edge="1" parent="1" source="Lhtp9tOnbV0N8Cz71-gY-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;curved=1;endArrow=none;endFill=0;" target="087t9o1YMWc2iChEVM3h-5">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object placeholders="1" c4Name="Приложение для донастройки протеза" c4Type="Container" c4Technology="iOD, Android" c4Description="" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="Lhtp9tOnbV0N8Cz71-gY-20">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;labelBackgroundColor=none;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
@@ -96,10 +99,13 @@
         <mxCell id="knssIh2SJm_b57-9fBCo-8" edge="1" parent="1" source="-s9W17W-NFw-Ta7AQgpa-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="knssIh2SJm_b57-9fBCo-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="knssIh2SJm_b57-9fBCo-10" connectable="0" parent="knssIh2SJm_b57-9fBCo-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Минимальный короткоживущий JWT,&amp;nbsp;&lt;div&gt;подписанный Auth Gateway&lt;/div&gt;" vertex="1">
+        <mxCell id="knssIh2SJm_b57-9fBCo-10" connectable="0" parent="knssIh2SJm_b57-9fBCo-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="PKCE" vertex="1">
           <mxGeometry relative="1" x="-0.275" y="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="087t9o1YMWc2iChEVM3h-4" edge="1" parent="1" source="-s9W17W-NFw-Ta7AQgpa-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;endArrow=none;endFill=0;" target="087t9o1YMWc2iChEVM3h-3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <object placeholders="1" c4Name="Интернет-магазин" c4Type="Container" c4Technology="Битрикс24" c4Description="" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="-s9W17W-NFw-Ta7AQgpa-19">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;labelBackgroundColor=none;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
@@ -135,12 +141,15 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="knssIh2SJm_b57-9fBCo-4" connectable="0" parent="knssIh2SJm_b57-9fBCo-3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="обращается для аутентификации&amp;nbsp;&lt;div&gt;(OAuth2 Code Grant) и&amp;nbsp;&lt;/div&gt;&lt;div&gt;обновления токенов.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Токены не передаются наружу&lt;/div&gt;" vertex="1">
+        <mxCell id="knssIh2SJm_b57-9fBCo-4" connectable="0" parent="knssIh2SJm_b57-9fBCo-3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;перенаправляет запросы от&amp;nbsp;&lt;/div&gt;&lt;div&gt;клиентов. PKCE и запросы&lt;/div&gt;&lt;div&gt;обновления токенов.&lt;/div&gt;" vertex="1">
           <mxGeometry relative="1" x="-0.0333" y="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <object placeholders="1" c4Name="Auth Gateway" c4Type="Container" c4Technology="SpringBoot" c4Description="API Gateway с функциями OAuth Proxy. Обеспечивает безопасную аутентификацию и авторизацию, управляет токенами от Keycloak, проксирует запросы к API" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="knssIh2SJm_b57-9fBCo-1">
+        <mxCell id="087t9o1YMWc2iChEVM3h-8" edge="1" parent="1" source="knssIh2SJm_b57-9fBCo-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;curved=1;endArrow=none;endFill=0;fillColor=#60a917;strokeColor=#2D7600;" target="087t9o1YMWc2iChEVM3h-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="API Gateway" c4Type="Container" c4Technology="SpringBoot" c4Description="API Gateway с функциями OAuth Proxy. Обеспечивает безопасную аутентификацию и авторизацию, управляет токенами от Keycloak, проксирует запросы к API" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="knssIh2SJm_b57-9fBCo-1">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;labelBackgroundColor=none;fillColor=#60a917;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#2D7600;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
             <mxGeometry height="120" width="240" x="770" y="140" as="geometry" />
           </mxCell>
@@ -161,7 +170,7 @@
         <mxCell id="knssIh2SJm_b57-9fBCo-5" edge="1" parent="1" source="Lhtp9tOnbV0N8Cz71-gY-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="knssIh2SJm_b57-9fBCo-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="knssIh2SJm_b57-9fBCo-7" connectable="0" parent="knssIh2SJm_b57-9fBCo-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Минимальный короткоживущий JWT,&amp;nbsp;&lt;div&gt;подписанный Auth Gateway&lt;/div&gt;" vertex="1">
+        <mxCell id="knssIh2SJm_b57-9fBCo-7" connectable="0" parent="knssIh2SJm_b57-9fBCo-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="PKCE" vertex="1">
           <mxGeometry relative="1" x="-0.0629" y="-1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -182,7 +191,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <object placeholders="1" c4Name="Внешний региональный IdP" c4Type="Software System" c4Description="Системы аутентификации в других странах (например, Госуслуги, BankID)" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="knssIh2SJm_b57-9fBCo-13">
+        <object placeholders="1" c4Name="Внешний региональный IdP" c4Type="Software System" c4Description="Системы аутентификации в других странах (например, Госуслуги)" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="knssIh2SJm_b57-9fBCo-13">
           <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#60a917;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#2D7600;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
             <mxGeometry height="120" width="240" x="294" y="650" as="geometry" />
           </mxCell>
@@ -207,6 +216,15 @@
           <mxGeometry relative="1" x="0.1061" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="087t9o1YMWc2iChEVM3h-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#2D7600;fillColor=#60a917;align=left;verticalAlign=middle;rounded=0;fontSize=10;fontColor=#ffffff;fontStyle=2" value="- Инициирует PKCE flow&lt;div&gt;- Хранит токены, выданные keycloak&lt;/div&gt;&lt;div&gt;-&amp;nbsp;Отправляет запросы к api gateway, добавляя Keycloak Access Token в заголовок Authorization: Bearer&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="170" x="960" y="-50" as="geometry" />
+        </mxCell>
+        <mxCell id="087t9o1YMWc2iChEVM3h-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#2D7600;fillColor=#60a917;align=left;verticalAlign=middle;rounded=0;fontSize=10;fontColor=#ffffff;fontStyle=2" value="- Инициирует PKCE flow&lt;div&gt;- Хранит токены, выданные keycloak&lt;/div&gt;&lt;div&gt;-&amp;nbsp;Отправляет запросы к api gateway, добавляя Keycloak Access Token в заголовок Authorization: Bearer&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="170" x="310" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="087t9o1YMWc2iChEVM3h-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#2D7600;fillColor=#60a917;align=left;verticalAlign=middle;rounded=0;fontSize=10;fontColor=#ffffff;fontStyle=2" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;- Центральная точка валидации Access Token&#39;ов&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;- Кеширует&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;JWKS (JSON Web Key Set) Keycloak&#39;а для&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp;валидации подписей JWT Access Token&#39;ов и периодически обновляет.&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;Клиенты напрямую взаимодействуют с keycloak для получения токенов.&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;-&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;Извлекает Keycloak Access Token из заголовка Authorization: Bearer.&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;-&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;Если Access Token валиден, api gateway может использовать User ID (извлеченный из Access Token) для запроса дополнительного профиля пользователя из regional_user_data_service.&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;-&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font&gt;Добавляет извлеченные из токена данные (User ID, роли) и/или данные из Сервиса региональных данных в запрос, прежде чем проксировать его к bionicpro_api.&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="240" x="1160" y="280" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
