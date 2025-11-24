@@ -121,6 +121,39 @@ def get_report():
         "disclaimer": "This report is for informational purposes only.",
     }
 
+    user_email = "prothetic@example.com"
+    user_first_name = "Adam"
+    user_last_name = "Jensen"
+    report_date = "24.11.2025-21:12:02"
+
+    gen_report = {
+        "user_name": username,
+        "email": user_email,
+        "firstName": user_first_name,
+        "lastName": user_last_name,
+        "reportDate": report_date,
+        "sensor_data": {
+            "utc_date_time": "24.11.2025-20:47:01",
+            "sensor_name": "totalMovements",
+            "value": 12345,
+        },
+        "sensor_data": {
+            "utc_date_time": "24.11.2025-20:47:02",
+            "sensor_name": "average5MinReactionTimeMs",
+            "value": 95,  # не может быть более 110
+        },
+        "sensor_data": {
+            "utc_date_time": "24.11.2025-20:47:03",
+            "sensor_name": "battery_percent",
+            "value": 50,  # не может быть более 100
+        },
+        "sensor_data": {
+            "utc_date_time": "24.11.2025-20:50:05",
+            "sensor_name": "battery_percent",
+            "value": 49,  # не может быть более 100
+        },
+    }
+
     return jsonify(report_data)
 
 
