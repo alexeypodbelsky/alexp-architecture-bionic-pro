@@ -1,0 +1,25 @@
+# ... ваш существующий docker-compose.yml
+
+services:
+  # ... другие сервисы, например, Keycloak, PostgreSQL, Nginx и т.д.
+
+  reports-service:
+    build:
+      context: . # Указывает Docker'у, где искать Dockerfile (в текущей директории)
+      dockerfile: Dockerfile
+    container_name: bionicpro_reports_service
+    ports:
+      - "8000:8000" # Проброс порта из контейнера на хост
+    environment:
+      # Эти переменные окружения будут доступны внутри контейнера.
+      # Убедитесь, что они соответствуют вашим настройкам Keycloak.
+      KEYCLOAK_URL: http://keycloak:8080 # Если Keycloak запущен в том же compose-файле, используйте его имя сервиса
+      KEYCLOAK_REALM: BionicPRO
+      KEYCLOAK_BACKEND_CLIENT_ID: reports-service
+      CORS_ALLOWED_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000" # Адрес, где будет работать ваше React-приложение
+    depends_on:
+      - keycloak # Указывает, что reports-service зависит от Keycloak. Запустится после него.
+    # Если у вас есть сеть в docker-compose, добавьте ее сюда:
+    # networks:
+    #   - bionicpro_network # Пример вашей сети
+    restart: unless-stopped # Автоматически перезапускать контейнер, если он упал

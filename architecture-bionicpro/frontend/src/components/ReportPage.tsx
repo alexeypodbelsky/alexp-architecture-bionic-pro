@@ -5,6 +5,7 @@ const ReportPage: React.FC = () => {
   const { keycloak, initialized } = useKeycloak();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [reportData, setReportData] = useState<any | null>(null);
 
   const downloadReport = async () => {
     if (!keycloak?.token) {
@@ -15,14 +16,23 @@ const ReportPage: React.FC = () => {
     try {
       setLoading(true);
       setError(null);
+      setReportData(null);
 
       const response = await fetch(`${process.env.REACT_APP_API_URL}/reports`, {
         headers: {
-          'Authorization': `Bearer ${keycloak.token}`
+          'Authorization': `Bearer ${keycloak.token}`,
+          'Accept': 'application/json'
         }
       });
 
-      
+      if (response.ok) {
+        // Предполагаем, что бэкенд возвращает JSON
+        const data = await response.json();
+        setReportData(data); // Сохраняем данные для отображения
+      } else {
+        const errorBody = await response.text(); // Читаем текст ошибки
+        setError(`Failed to download report: ${response.status} - ${errorBody}`);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
@@ -51,13 +61,12 @@ const ReportPage: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="p-8 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-6">Usage Reports</h1>
-        
+
         <button
           onClick={downloadReport}
           disabled={loading}
-          className={`px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 ${
-            loading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className={`px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
         >
           {loading ? 'Generating Report...' : 'Download Report'}
         </button>
@@ -67,6 +76,17 @@ const ReportPage: React.FC = () => {
             {error}
           </div>
         )}
+
+        {reportData && (
+          <div className="mt-4 p-4 bg-green-100 text-green-700 rounded">
+            <h3 className="font-semibold">Report Data:</h3>
+            <pre className="whitespace-pre-wrap break-all text-sm">
+              {JSON.stringify(reportData, null, 2)}
+            </pre>
+            {/* Здесь можно отобразить данные отчета более красиво, например, в таблице */}
+          </div>
+        )}
+
       </div>
     </div>
   );
