@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+// Импортируем useRef и useEffect
 import { useKeycloak } from '@react-keycloak/web';
 
 const ReportPage: React.FC = () => {
@@ -7,12 +8,28 @@ const ReportPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [reportData, setReportData] = useState<any | null>(null);
 
+  // 1. Создаем ссылку на DOM-элемент
+  const reportEndRef = useRef<HTMLDivElement>(null);
+
+  // 2. Функция для автоматической прокрутки вниз
+  const scrollToBottom = () => {
+    reportEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // 3. Используем useEffect для вызова прокрутки при обновлении reportData
+  useEffect(() => {
+    if (reportData) {
+      scrollToBottom();
+    }
+  }, [reportData]); // Запускается при каждом изменении reportData
+
+
   const downloadReport = async () => {
     if (!keycloak?.token) {
       setError('Not authenticated');
       return;
     }
-
+    // ... (остальная часть функции downloadReport остается без изменений)
     try {
       setLoading(true);
       setError(null);
@@ -26,11 +43,10 @@ const ReportPage: React.FC = () => {
       });
 
       if (response.ok) {
-        // Предполагаем, что бэкенд возвращает JSON
         const data = await response.json();
-        setReportData(data); // Сохраняем данные для отображения
+        setReportData(data);
       } else {
-        const errorBody = await response.text(); // Читаем текст ошибки
+        const errorBody = await response.text();
         setError(`Failed to download report: ${response.status} - ${errorBody}`);
       }
     } catch (err) {
@@ -40,6 +56,7 @@ const ReportPage: React.FC = () => {
     }
   };
 
+  // ... (остальная часть логики аутентификации остается без изменений)
   if (!initialized) {
     return <div>Loading...</div>;
   }
@@ -78,12 +95,15 @@ const ReportPage: React.FC = () => {
         )}
 
         {reportData && (
-          <div className="mt-4 p-4 bg-green-100 text-green-700 rounded">
+          // 4. Добавляем классы Tailwind CSS для ограничения высоты и ручной прокрутки
+          // (max-h-60 делает окно не выше 15rem, overflow-y-auto добавляет полосу прокрутки)
+          <div className="mt-4 p-4 bg-green-100 text-green-700 rounded max-h-60 overflow-y-auto">
             <h3 className="font-semibold">Report Data:</h3>
             <pre className="whitespace-pre-wrap break-all text-sm">
               {JSON.stringify(reportData, null, 2)}
             </pre>
-            {/* Здесь можно отобразить данные отчета более красиво, например, в таблице */}
+            {/* 5. Добавляем невидимый элемент в конец, на который ссылаемся */}
+            <div ref={reportEndRef} />
           </div>
         )}
 

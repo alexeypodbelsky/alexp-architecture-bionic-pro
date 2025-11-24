@@ -6,6 +6,8 @@ import requests
 from functools import wraps
 from dotenv import load_dotenv
 from flask_cors import CORS
+import psycopg2
+from datetime import datetime
 
 load_dotenv()
 
@@ -16,6 +18,13 @@ CORS(app)
 KEYCLOAK_URL = os.environ.get("KEYCLOAK_URL")
 KEYCLOAK_REALM = os.environ.get("KEYCLOAK_REALM")
 KEYCLOAK_AUDIENCE = os.environ.get("KEYCLOAK_CLIENT_ID")
+
+# --- Конфигурация базы данных ---
+DB_HOST = "localhost"
+DB_NAME = "sample"
+DB_USER = "airflow"
+DB_PASS = "airflow"
+DB_PORT = "5432"
 
 if not all([KEYCLOAK_URL, KEYCLOAK_REALM, KEYCLOAK_AUDIENCE]):
     print(
@@ -102,59 +111,74 @@ def token_required(f):
 @app.route("/reports", methods=["GET", "OPTIONS"])
 @token_required
 def get_report():
-    user_id = request.user_id
     username = request.username
 
-    report_data = {
-        "userId": user_id,
-        "username": username,
-        "reportType": "ProsthesisUsage",
-        "period": "Last Month",
-        "summary": "This is a hardcoded report for your prosthesis usage.",
-        "details": {
-            "totalMovements": 12345,
-            "averageReactionTimeMs": 95,
-            "batteryCycles": 30,
-            "lastCalibrationDate": "2023-10-26",
-            "prosthesisModel": "BionicPRO X-200",
-        },
-        "disclaimer": "This report is for informational purposes only.",
-    }
+    if not username:
+        return (
+            jsonify({"message": "Username not provided by token_required decorator"}),
+            401,
+        )
 
-    user_email = "prothetic@example.com"
-    user_first_name = "Adam"
-    user_last_name = "Jensen"
-    report_date = "24.11.2025-21:12:02"
+    conn = None
+    try:
+        conn = psycopg2.connect(
+            host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS, port=DB_PORT
+        )
+        cur = conn.cursor()
 
-    gen_report = {
-        "user_name": username,
-        "email": user_email,
-        "firstName": user_first_name,
-        "lastName": user_last_name,
-        "reportDate": report_date,
-        "sensor_data": {
-            "utc_date_time": "24.11.2025-20:47:01",
-            "sensor_name": "totalMovements",
-            "value": 12345,
-        },
-        "sensor_data": {
-            "utc_date_time": "24.11.2025-20:47:02",
-            "sensor_name": "average5MinReactionTimeMs",
-            "value": 95,  # не может быть более 110
-        },
-        "sensor_data": {
-            "utc_date_time": "24.11.2025-20:47:03",
-            "sensor_name": "battery_percent",
-            "value": 50,  # не может быть более 100
-        },
-        "sensor_data": {
-            "utc_date_time": "24.11.2025-20:50:05",
-            "sensor_name": "battery_percent",
-            "value": 49,  # не может быть более 100
-        },
-    }
+        sql_query = """
+            SELECT utc_date_time, user_name, email, firstName, lastName, sensor_name, value
+            FROM sample_table
+            WHERE user_name = %s
+            ORDER BY utc_date_time;
+        """
+        cur.execute(sql_query, (username,))
+        rows = cur.fetchall()
 
-    return jsonify(report_data)
+        if not rows:
+            return jsonify({"message": f"No data found for user: {username}"}), 404
+
+        first_row = rows[0]
+        user_email = first_row[2]
+        user_first_name = first_row[3]
+        user_last_name = first_row[4]
+
+        sensor_data_list = []
+        for row in rows:
+            sensor_data_list.append(
+                {
+                    "utc_date_time": row[0].strftime("%d-%m-%Y %H:%M:%S"),
+                    "sensor_name": row[5],
+                    "value": row[6],
+                }
+            )
+
+        report_date_str = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+
+        gen_report = {
+            "user_name": username,
+            "email": user_email,
+            "firstName": user_first_name,
+            "lastName": user_last_name,
+            "reportDate": report_date_str,
+            "sensor_data": sensor_data_list,
+        }
+
+        return jsonify(gen_report)
+
+    except psycopg2.Error as e:
+        print(f"Database error: {e}")
+        return (
+            jsonify({"error": f"Failed to retrieve data from the database: {e}"}),
+            500,
+        )
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return jsonify({"error": f"An internal server error occurred: {e}"}), 500
+    finally:
+        if conn:
+            cur.close()
+            conn.close()
 
 
 if __name__ == "__main__":
